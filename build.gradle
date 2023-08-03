@@ -17,11 +17,20 @@ configurations {
     }
 }
 
+ext{
+    awsSdkVersion = "1.11.1000";
+    localStackVersion = "0.2.20";
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation platform("com.amazonaws:aws-java-sdk-bom:${awsSdkVersion}")
+    implementation("com.amazonaws:aws-java-sdk-s3")
+    implementation("cloud.localstack:localstack-utils:${localStackVersion}")
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
