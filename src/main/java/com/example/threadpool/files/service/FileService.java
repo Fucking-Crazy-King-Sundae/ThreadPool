@@ -9,15 +9,17 @@ import com.amazonaws.util.IOUtils;
 import com.example.threadpool.files.controller.support.exception.UncaughtException;
 import java.io.IOException;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@RequiredArgsConstructor
 @Service
 public class FileService {
 
     private final AmazonS3 s3Client;
+
+    public FileService(AmazonS3 s3Client) {
+        this.s3Client = s3Client;
+    }
 
     private final String BUCKET = "file-bucket";
 
